@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Tabs from './components/Tabs';
+import config from './config';
+
+//background-color: #f9fcff;
+//background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
 
 function App() {
+  const { tabs: letters } = config;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Tabs Demo</h1>
+      <Tabs>
+        {letters.map((letter) => {
+          return (
+            <div
+              key={letter}
+              label={letter}>
+              Showing the guts for letter: <strong>{letter}</strong>!
+            </div>
+          );
+        })}
+      </Tabs>
     </div>
   );
 }
