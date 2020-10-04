@@ -36,6 +36,8 @@
   cursor: pointer;
   position: relative;
   font-weight: 500;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 .tab__count {
@@ -58,6 +60,18 @@
 .tab__content {
   position: relative;
   border-radius: 1%;
+}
+
+.no__contact__info {
+  text-align: center;
+  padding: 60px 0;
+  background-color: #565656;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+      -moz-background-clip: text;
+          background-clip: text;
+  font-size: 300%;
 }
 
 .tab__content__container {

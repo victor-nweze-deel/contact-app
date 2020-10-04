@@ -22,7 +22,7 @@ class TabContent extends Component {
   render() {
     const { props: { contacts }, state: { activeProfile }, setActiveProfile, closeProfile } = this;
 
-    if (!(contacts && contacts.length)) return <div />;
+    if (!(contacts && contacts.length)) return <div className="no__contact__info">No contacts to display here!</div>;
 
     const firstPane = activeProfile ? [] : contacts.slice(0, Math.round(contacts.length/2));
     const secondPane = activeProfile ? contacts : contacts.slice(Math.round(contacts.length/2));
