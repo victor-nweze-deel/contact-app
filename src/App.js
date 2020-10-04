@@ -32,13 +32,15 @@ function App() {
 
   return (
     <div className="App">
-      <h1>{title}</h1>
+      <h1 className="app__title">{title}</h1>
       <Tabs>
         {letters.map((letter) => {
+          const count = contacts[letter] ? contacts[letter].length.toString() : "0";
           return (
             <div
               key={letter}
-              label={letter}>
+              label={letter}
+              count={count}>
               <TabContent contacts={contacts[letter]}></TabContent>
             </div>
           );

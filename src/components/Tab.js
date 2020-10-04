@@ -19,17 +19,21 @@ class Tab extends Component {
       props: {
         activeTab,
         label,
+        count,
       },
     } = this;
 
-    let className = 'tab-list-item';
+    let className = 'tab__list__item';
 
     if (activeTab === label) {
-      className += ' tab-list-active';
+      className += ' tab__list--active';
     }
 
     return (
-      <li className={className} onClick={onClick}>{label}</li>
+      <li className={className} onClick={onClick}>
+        {count && <span className="tab__count">{count}</span>}
+        {label}
+      </li>
     );
   };
 }
