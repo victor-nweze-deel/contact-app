@@ -12,6 +12,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4. To run tests, run `npm test`
 5. To create a production build of this project, run `npm build`
 
+## Demo Functionality
+![eurail-project-J3TveDAp-UhiI](https://user-images.githubusercontent.com/41582565/95186081-7b152d00-07c1-11eb-9303-df2171de9dcf.gif)
+
+
 ### Deployment
 This project is automatically built and tested on Travis-CI upon every push to GitHub. [Click Me To See The Build](https://travis-ci.com/ProfJigsaw/contact-app)
 
