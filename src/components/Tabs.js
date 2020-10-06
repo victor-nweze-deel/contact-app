@@ -1,56 +1,52 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Tab from './Tab';
 
-class Tabs extends Component {
-  static propTypes = {
-    children: PropTypes.instanceOf(Array).isRequired,
+const useLocalStorage = (key, initialValue) => {
+  const [storedValue, setStoredValue] = useState(() => {
+    const item = window.localStorage.getItem(key) || initialValue;
+    return item
+  });
+
+  const setValue = value => {
+    setStoredValue(value.toString());
+    window.localStorage.setItem(key, value.toString());
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeTab: this.props.children[0].props.label,
-    };
-  }
-
-  onClickTabItem = (tab) => {
-    this.setState({ activeTab: tab });
-  }
-
-  render() {
-    const {
-      onClickTabItem,
-      props: { children },
-      state: { activeTab }
-    } = this;
-
-    return (
-      <div className="tabs">
-        <ol className="tab__list">
-          {children.map((child) => {
-            const { label, count } = child.props;
-            return (
-              <Tab
-                activeTab={activeTab}
-                key={label}
-                label={label}
-                count={count}
-                onClick={onClickTabItem}
-              />
-            );
-          })}
-        </ol>
-        <div className="tab__content">
-          {children.map((child) => {
-            if (child.props.label !== activeTab) return undefined;
-            return child.props.children;
-          })}
-        </div>
-      </div>
-    );
-  }
+  return [storedValue, setValue];
 }
+
+function Tabs({ children }) {
+  const [activeTab, setActiveTab] = useLocalStorage('activeTab', 'a');
+
+  return (
+    <div className="tabs">
+      <ol className="tab__list">
+        {children.map((child) => {
+          const { label, count } = child.props;
+          return (
+            <Tab
+              activeTab={activeTab}
+              key={label}
+              label={label}
+              count={count}
+              onClick={setActiveTab}
+            />
+          );
+        })}
+      </ol>
+      <div className="tab__content">
+        {children.map((child) => {
+          if (child.props.label !== activeTab) return undefined;
+          return child.props.children;
+        })}
+      </div>
+    </div>
+  );
+}
+
+Tabs.propTypes = {
+  children: PropTypes.instanceOf(Array).isRequired,
+};
 
 export default Tabs;

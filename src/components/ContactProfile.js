@@ -14,12 +14,12 @@ class ContactProfile extends Component {
         </div>
         <div className="divider"></div>
         <h2 className="name">{fullname}</h2>
-        <div className="username">{profile.username}</div>
+        <div className="username" data-testid="contact-username">{profile.username}</div>
         <div className="desc">
-          <p>{profile.email}</p>
-          <p>{profile.phone}</p>
-          <p>{profile.postcode}</p>
-          <p>{profile.street}, {profile.city}, {profile.state}</p>
+          <p data-testid="contact-email">{profile.email}</p>
+          <p data-testid="contact-phone">{profile.phone}</p>
+          <p data-testid="contact-postcode">{profile.postcode}</p>
+          <p data-testid="contact-street">{profile.street}, {profile.city}, {profile.state}</p>
         </div>
       </div>
     );
